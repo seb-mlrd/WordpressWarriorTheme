@@ -17,7 +17,6 @@
 				array(
 					'theme_location' => 'menu-2',
 					'menu_id'        => 'secondary-menu',
-					
 				)
 			);
 		?>

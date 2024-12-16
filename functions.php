@@ -177,3 +177,12 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+function wordpressWarrior_menu_class($classes) {
+
+	$classes[] = 'nav-item-rdg';
+	return $classes;
+};
+
+
+add_filter('nav_menu_css_class', 'wordpressWarrior_menu_class');
