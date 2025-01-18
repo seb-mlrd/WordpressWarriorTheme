@@ -19,16 +19,15 @@ get_header();
 
 	<div class="photo-wall">
 		<p>coucou, ici c'est le plugin mais pour l'instant c'est vide</p>
-		<img src="http://localhost:8888/wordpress/wp-content/uploads/2024/12/dandadan-scaled.jpg" alt="">
 	</div>
 		<?php
 		if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) :
 				?>
-				<header>
+				<div>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
+				</div>
 				<?php
 			endif;
 			/* Start the Loop */
@@ -41,13 +40,14 @@ get_header();
 				* called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				*/
 				get_template_part( 'template-parts/content', get_post_type() );
-				?><p class="introduction"><span class="degrader-red">Experts en photo et vidéo,</span> nous transformons vos moments en histoires visuelles qui marquent les esprits et captivent les regards.</p><?php
+				?><p class="introduction"><span class="degrader-red">Experts en photo et vidéo,</span> nous transformons vos moments en histoires visuelles qui marquent les esprits et captivent les regards.</p>
+			<?php
 
 			endwhile;
 
 			the_posts_navigation();
 
-		else :
+		else:
 
 			get_template_part( 'template-parts/content', 'none' );
 

@@ -16,7 +16,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
 	<?php wp_head(); ?>
 </head>
 
@@ -34,9 +34,19 @@
 				<p class="site-description"><?php echo $wordpress_warrior_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
-
+		<div class="container-burger-logo">
+			<div class="container-logo">
+				 <?php 
+				the_custom_logo(); 
+				?>
+			</div>
+			<div class="burger-icon">
+				<span class="others"></span>
+				<span class="middle"></span>
+				<span class="others"></span>
+			</div>
+		</div>
 		<nav id="site-navigation" class="main-navigation">
-			<div class="container-logo"><?php the_custom_logo(); ?></div>
 			<?php
 				wp_nav_menu(
 					array(
@@ -48,7 +58,5 @@
 				);
 			?>
 			<a href="" class="contact-button">Contact</a>
-		</nav><!-- #site-navigation -->
-		<div class="container-big-logo"><?php the_custom_logo(
-); ?></div>
-	</header><!-- #masthead -->
+		</nav>
+

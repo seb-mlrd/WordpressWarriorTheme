@@ -76,11 +76,23 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 :root {
 	--border-solid: #2d2d2d;
 	--light-black: #0E0E10;
+	--text-grey: #999999;
+	/* --Border-Gradient: #8f8f8f0d; */
 }
 body{
 	background: black;
 }
+.logo a img{
+	margin: auto;
+	width: 300px;
+	height: auto;
+}
 
+.container-logo{
+	display: grid;
+	justify-items: center;
+	align-items: center;
+}
 .main-navigation{
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr;
@@ -155,6 +167,64 @@ body{
 	height: 311px;
 }
 
+.burger-icon{
+	display: none;
+}
+
+@media screen and (max-width: 768px) {
+	.main-navigation{
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto;
+		position: fixed;
+		left: 800px;
+		background: black;
+		z-index: 9999;
+		padding: 50px;
+	}
+	.container-burger-logo{
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		position: fixed;
+		background: black;
+		padding: 10px;
+		z-index: 999;
+		width: 100vw;
+	}
+	.burger-icon {
+		width: 30px;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 20px;
+		position: fixed;
+		right: 8%;
+		top: 10%;
+	}
+	.middle{
+		display: block;
+		height: 1px;
+		margin: auto;
+		width: 80%;
+		background-color: white;
+		border-radius: 4px;
+		transition: all 0.3s ease;
+	}
+	.others{
+		display: block;
+		height: 3px;
+		width: 100%;
+		background-color: white;
+		border-radius: 4px;
+		transition: all 0.3s ease;
+	}
+
+	.container-logo-nav{
+		position: fixed;
+	}
+
+}
 .photo-wall{
 	width: 100vw;
 	display: grid;
@@ -171,11 +241,194 @@ body{
 	background: -webkit-linear-gradient(45deg, #d43c31, #e2634f, #ee856f, #f8a592, #ffc5b6);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	font-size: 64px;
+	font-family: inter;
+	font-style: normal;
 	font-weight: 400;
 }
 
 .introduction{
-	font-size: 64px;
+	font-family: inter;
+	font-style: normal;
+	font-size: 34px;
 	font-weight: 400;	
+}
+
+.container-introduction{
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	padding: 56px 16px;
+	gap: 8px;
+	align-self: stretch;
+}
+
+.container-categories{
+	display: grid;
+	padding: 64px 16px;
+	gap: 56px;
+}
+
+.buttonLink{
+	width:180px;
+	border: 1px solid var(--border-solid);
+	border-radius: 64px;
+	padding: 10px 18px;
+	text-decoration: none;
+	text-align: start;
+	display: grid;
+	align-items: center;
+	grid-template-columns: 1fr 2fr;
+	font-size: 16px;
+	font-weight: 500;
+}
+.buttonLink::before{
+	content:"";
+	display: block;
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: red;
+}
+
+.textCategorie{
+	font-family: inter;
+	font-size: 34px;
+	font-weight: 500;
+	background: var(--Text-Gradient, linear-gradient(180deg, #FFF 0%, #999 100%));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.container-services{
+	display: grid;
+	gap: 12px;
+}
+svg{
+	width: 36px;
+	height: 36px;
+}
+.service-list{
+	display: grid;
+	padding: 32px 24px;
+	border-radius: 32px;
+	border: 1px solid var(--Border-Gradient, rgba(90, 90, 90, 0.40));
+	background: var(--Light-Black, #0E0E10);
+	gap: 16px;
+}
+.container-list{
+	display: grid;
+	grid-template-columns: 15% 85%;
+}
+.container-list p{
+	width: 250px;
+	font-family: inter;
+	color: var(--text-grey);
+	font-size: 26px;
+	font-weight: 500;
+	text-align: left;
+	position: relative;
+}
+.container-list p::after{
+	content: "";
+	display: block;
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: var(--after-background, #999999);
+	position: absolute;
+    top: 50%;
+    right: 0;
+	transform: translateY(-50%);
+}
+.contentService{
+	display: none;
+}
+.contentService.active{
+	display: block;
+	color: var(--text-grey);
+}
+.contentService.active .test{
+	color: white;
+}
+.container-social{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+}
+.social-link{
+	text-decoration: none;
+	text-align: center;
+	color: var(--text-grey);
+	width: 120px;
+	border-radius: 65px;
+	border: 2px solid var(--Border-Gradient, rgba(90, 90, 90, 0.40));
+	padding: 8px 20px;
+}
+
+form{
+	display: grid;
+	gap: 16px;
+}
+input, textarea{
+	border-radius: 13px;
+	color: var(--text-grey);
+	border: 1px solid var(--Border-Gradient, rgba(90, 90, 90, 0.40));
+	padding: 21px 24px;
+	background: none;
+	font-size: 16px;
+}
+input[type="submit"]{
+	border-radius: 13px;
+	color: white;
+	border: 1px solid var(--Border-Gradient, rgba(90, 90, 90, 0.40));
+	padding: 21px 24px;
+	background: var(--light-black);
+	font-size: 20px;
+}
+
+.container-faq{
+	display: grid;
+	gap: 12px;
+}
+
+.container-faq-list{
+	display: grid;
+	padding: 32px 24px;
+	border-radius: 32px;
+	border: 1px solid var(--Border-Gradient, rgba(90, 90, 90, 0.40));
+	background: var(--Light-Black, #0E0E10);
+	gap: 16px;
+}
+
+.faq-list{
+	display: grid;
+	grid-template-columns: 15% 85%;
+}
+.question{
+	width: 250px;
+	font-family: inter;
+	color: var(--text-grey);
+	font-size: 20px;
+	font-weight: 500;
+	text-align: left;
+	position: relative;
+}
+.question::after{
+	content: "";
+	display: block;
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: var(--after-background, #999999);
+	position: absolute;
+    top: 50%;
+    left: 110%;
+	transform: translateY(-50%);
+}
+.contentFaq{
+	display: none;
+}
+.contentFaq.active{
+	display: block;
+	color: var(--text-grey);
 }

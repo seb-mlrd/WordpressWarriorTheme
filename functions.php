@@ -123,25 +123,59 @@ add_action( 'after_setup_theme', 'wordpress_warrior_content_width', 0 );
 function wordpress_warrior_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'wordpress_warrior' ),
-			'id'            => 'sidebar-1',
+			'name'          => esc_html__( 'Faq', 'wordpress_warrior' ),
+			'id'            => 'faq-1',
 			'description'   => esc_html__( 'Add widgets here.', 'wordpress_warrior' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Services', 'wordpress_warrior' ),
+			'id'            => 'services-1',
+			'description'   => esc_html__( 'Add widgets here.', 'wordpress_warrior' ),
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Avis', 'wordpress_warrior' ),
+			'id'            => 'avis-1',
+			'description'   => esc_html__( 'Add widgets here.', 'wordpress_warrior' ),
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'FirstWall', 'wordpress_warrior' ),
+			'id'            => 'firstWall-1',
+			'description'   => esc_html__( 'Add widgets here.', 'wordpress_warrior' ),
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'SecondWall', 'wordpress_warrior' ),
+			'id'            => 'secondWall-1',
+			'description'   => esc_html__( 'Add widgets here.', 'wordpress_warrior' ),
 		)
 	);
 }
 add_action( 'widgets_init', 'wordpress_warrior_widgets_init' );
 
+//cette fonction permet de changer les zone de widget en div car elles sont en <li> de base et il y a un point devant chaque <li>
+function custom_widget_container($widget){
+    // echo var_dump($widget);
+
+    // $widget = str_replace('<ul>', '<div>',$widget);
+    $widget[0]['before_widget'] = str_replace('<li' , '<div', $widget[0]['before_widget']);
+    $widget[0]['after_widget'] = str_replace('</li' , '</div', $widget[0]['after_widget']);
+    return $widget;
+}
+add_filter('dynamic_sidebar_params','custom_widget_container'); 
 /**
  * Enqueue scripts and styles.
  */
 function wordpress_warrior_scripts() {
 	wp_enqueue_style( 'wordpress_warrior-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'wordpress_warrior-style', 'rtl', 'replace' );
-
+	wp_enqueue_script('wordpress_warrior-script', get_template_directory_uri() . '/js/index.js', array(), _S_VERSION, true);
 	wp_enqueue_script( 'wordpress_warrior-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
