@@ -14,7 +14,7 @@ get_header();
     </div>
     
 </main>
-<section class="container-categories">
+<section class="container-wall">
     <a href="" class="buttonLink">Galerie</a>
     <p class="galerie textCategorie">Découvrez l'art de capturer l'instant à travers notre galerie photo et vidéo.</p>
     <?php dynamic_sidebar('SecondWall'); ?>
@@ -28,13 +28,15 @@ get_header();
     <?php dynamic_sidebar('Avis'); ?>
 </section>
 
-<section class="container-categories">
-    <a href="" class="buttonLink">Contact</a>
-    <p class="galerie textCategorie">Un projet en tête ? Contactez nous.</p>
-    <div class="container-social">
-        <a href="" class="social-link">Instagram</a>
-        <a href="" class="social-link">Facebook</a>
-        <a href="" class="social-link">Twitter (x)</a>
+<section class="container-categories-contact">
+    <div class="container-contact">
+        <a href="" class="buttonLink">Contact</a>
+        <p class="galerie textCategorie">Un projet en tête ? Contactez nous.</p>
+        <div class="container-social">
+            <a href="" class="social-link">Instagram</a>
+            <a href="" class="social-link">Facebook</a>
+            <a href="" class="social-link">Twitter (x)</a>
+        </div>
     </div>
     <form action="" method="post">
         <input type="text" name="name" id="name" placeholder="Prénom et Nom">

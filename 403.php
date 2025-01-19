@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
+ * The template for displaying 403 pages (access denied)
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ * @link https://codex.wordpress.org/Creating_an_Error_403_Page
  *
  * @package wordpress_warrior
  */
@@ -61,6 +61,16 @@ get_header();
         border-color: #666;
     }
 
+    .logo {
+        font-size: 5rem;
+        font-weight: bold;
+        color: white;
+        margin-top: 30px;
+        background: linear-gradient(to top, #ff4b4b, black);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
     /* Responsive styles */
     @media (max-width: 768px) {
         .error-404 h1 {
@@ -74,6 +84,10 @@ get_header();
         .home-button {
             padding: 10px 15px;
             font-size: 1rem;
+        }
+
+        .logo {
+            font-size: 4rem;
         }
     }
 
@@ -90,14 +104,18 @@ get_header();
             padding: 8px 12px;
             font-size: 0.9rem;
         }
+
+        .logo {
+            font-size: 3rem;
+        }
     }
 </style>
 
 <main id="primary" class="site-main">
     <section class="error-404 not-found">
         <header class="page-header">
-            <h1 class="page-title"><?php esc_html_e( '404 - error', 'wordpress_warrior' ); ?></h1>
-            <p><?php esc_html_e( 'Page non trouvée', 'wordpress_warrior' ); ?></p>
+            <h1 class="page-title"><?php esc_html_e( '403 - error', 'wordpress_warrior' ); ?></h1>
+            <p><?php esc_html_e( 'Forbidden', 'wordpress_warrior' ); ?></p>
         </header><!-- .page-header -->
 
         <div class="page-content">

@@ -82,4 +82,132 @@ menuToggle.addEventListener('click', () => {
     }
 });
 
-// });
+// nav
+
+
+
+const navItems = document.querySelectorAll('.nav-link-rdg');
+
+    // Récupérer le lien actif depuis le localStorage
+const activeLinkIndex = localStorage.getItem('activeLinkIndex');
+
+if (activeLinkIndex) {
+    navItems[activeLinkIndex].classList.add('activeLink');
+}
+if (activeLinkIndex === null) {
+    activeLinkIndex = 0;  // Le premier élément (index 0) par défaut
+}
+
+
+// Ajouter un écouteur d'événements pour gérer les clics
+navItems.forEach((item, index) => {
+    item.addEventListener('click', function () {
+        // Réinitialiser tous les éléments en retirant la classe 'activeLink'
+        navItems.forEach((navItem) => {
+            navItem.classList.remove('activeLink');
+        });
+
+        // Ajouter la classe 'activeLink' à l'élément cliqué
+        item.classList.add('activeLink');
+
+        // Sauvegarder l'index du lien actif dans le localStorage
+        localStorage.setItem('activeLinkIndex', index);
+    });
+});
+
+
+//slider img 
+
+
+
+
+// const figures_2 = Array.from(document.querySelectorAll('#slider-shooting figure')); // Toutes les balises figure
+// const rightButton = document.getElementsByClassName('button_photo_right_2')
+// const leftButton = document.getElementsByClassName('button_photo_left_2')
+// const carroussel_2 = document.getElementById('carroussel_2')
+// let currentIndex_2 = 0;
+// console.log(figures_2);
+
+
+// //création du container du carroussel
+// let div = document.createElement('div');
+// // carroussel_2.classList('container_carroussel');
+// carroussel_2.appendChild(figures_2)
+
+// rightButton.addEventListener('click', () =>{
+//     console.log("button droite");
+//     // div.remove()
+//     // let div = document.createElement('div');
+//     // div.classList('container_carroussel');
+//     carroussel_2.appendChild(shiftRight(figures_2));
+//     console.log("button droite");
+// })
+
+// leftButton.addEventListener('click', () =>{
+//     console.log("button gauche");
+//     // div.remove()
+//     // let div = document.createElement('div');
+//     // div.classList('container_carroussel');
+//     carroussel_2.appendChild(shiftLeft(figures_2));
+//     console.log("button gauche");
+// })
+
+
+
+// // deplacer a droite
+
+// function shiftRight(array) {
+//     if (array.length > 1) {
+//         const lastElement = array.pop(); // Enlever le dernier élément
+//         array.unshift(lastElement); // Ajouter l'élément au début du tableau
+//     }
+// }
+
+
+// // deplacer a gauche    
+// function shiftLeft(array) {
+//     if (array.length > 1) {
+//         const firstElement = array.shift(); // Enlever le premier élément
+//         array.push(firstElement); // Ajouter l'élément à la fin du tableau
+//     }
+// }
+
+
+const figures_2 = Array.from(document.querySelectorAll('#slider-shooting figure')); // Toutes les balises figure
+const rightButton = document.getElementsByClassName('button_photo_right_2')[0]; // Sélectionner le premier bouton
+const leftButton = document.getElementsByClassName('button_photo_left_2')[0]; // Sélectionner le premier bouton
+const carroussel_2 = document.getElementById('carroussel_2');
+
+let currentIndex_2 = 0;
+
+// Afficher les figures dans le carrousel
+function updateCarrousel() {
+    carroussel_2.innerHTML = ''; // Réinitialiser le contenu du carrousel
+    carroussel_2.appendChild(figures_2[currentIndex_2]); // Ajouter l'élément à la position actuelle
+}
+
+// Fonction pour faire défiler à droite
+function shiftRight() {
+    currentIndex_2 = (currentIndex_2 + 1) % figures_2.length; // Passer à l'élément suivant (circularité)
+    updateCarrousel(); // Mettre à jour le carrousel
+}
+
+// Fonction pour faire défiler à gauche
+function shiftLeft() {
+    currentIndex_2 = (currentIndex_2 - 1 + figures_2.length) % figures_2.length; // Passer à l'élément précédent (circularité)
+    updateCarrousel(); // Mettre à jour le carrousel
+}
+
+// Écouteurs d'événements pour les boutons
+rightButton.addEventListener('click', () => {
+    console.log("Button droite");
+    shiftRight(); // Déplacer à droite
+});
+
+leftButton.addEventListener('click', () => {
+    console.log("Button gauche");
+    shiftLeft(); // Déplacer à gauche
+});
+
+// Initialiser le carrousel avec la première image
+updateCarrousel();
