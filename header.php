@@ -35,7 +35,7 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 		<div class="container-burger-logo">
-			<div class="container-logo">
+			<div class="container-logo-mobile">
 				 <?php 
 				the_custom_logo(); 
 				?>
@@ -47,6 +47,11 @@
 			</div>
 		</div>
 		<nav id="site-navigation" class="main-navigation">
+			<div class="container-logo">
+				 <?php 
+				the_custom_logo(); 
+				?>
+			</div>
 			<?php
 				wp_nav_menu(
 					array(
