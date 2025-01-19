@@ -62,6 +62,6 @@
 					)
 				);
 			?>
-			<a href="" class="contact-button">Contact</a>
+			<a href="contact" class="contact-button">Contact</a>
 		</nav>
 
